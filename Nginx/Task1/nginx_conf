@@ -1,0 +1,43 @@
+##
+server {
+    listen 80;
+    server_name admin.customerabc.click;
+
+    root /var/www/html;
+
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+
+server {
+    listen 80;
+    server_name client.customerabc.click;
+
+    root /var/www/html/web;
+    index portfolio.html;
+
+    location /hello/ {
+        alias /var/www/html/web/;
+        index web1.html;
+        #try_files $uri $uri/ /web1.html;
+    }
+
+    location /goodbye/ {
+        alias /var/www/html/web/;
+        index web2.html;
+    }
+}
+server {
+    listen 80;
+    server_name admin.customerabc.click;
+
+    location /hello/ {
+        alias /var/www/html/web/;
+        index web3.html;
+        #try_files $uri $uri/ /web1.html;
+    }
+}
+
