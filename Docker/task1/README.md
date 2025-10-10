@@ -14,29 +14,42 @@ Next step: học docker. Biến hết cái đống trên đó thành docker cont
 Viết dockerfile cho nó. Viết dockercompose cho nó chạy. 
 Viết add thêm con nginx làm reverse proxy cho toàn bộ mấy con web đó.
 
-Structure: 
 /srv/lifehub/
 ├── nginx/
 │   └── lifehub.conf
 ├── apache2/
 │   └── index.php
 ├── django/
-│   └── manage.py + hello_app/
+│   ├── manage.py
+│   └── hello_app/
+│       └── __init__.py
 ├── node/
 │   └── index.js
 ├── php/
 │   └── index.php
 ├── tomcat/
-│   └── webapps/ROOT/index.jsp
+│   └── webapps/
+│       └── ROOT/
+│           └── index.jsp
 ├── quarkus/
-│   └── src/main/java/.../Main.java
+│   └── src/
+│       └── main/
+│           └── java/
+│               └── com/
+│                   └── lifehub/
+│                       └── Main.java
 ├── go/
 │   └── main.go
 ├── rails/
-│   └── config.ru / app/views/home/index.html.erb
+│   ├── config.ru
+│   └── app/
+│       └── views/
+│           └── home/
+│               └── index.html.erb
 ├── react/
-│   └── src/App.js
+│   └── src/
+│       └── App.js
 └── db/
-    ├── mariadb
-    └── mongodb
+    ├── mariadb/
+    └── mongodb/
 
