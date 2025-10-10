@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Node / React
+node_modules/
+build/
+dist/
+.env
+
+# Java / Tomcat
+target/
+*.war
+*.jar
+*.class
+
+# Go
+bin/
+*.exe
+
+# Ruby on Rails
+log/
+tmp/
+.bundle/
+
+# System
+.DS_Store
+.idea/
+.vscode/
