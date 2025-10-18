@@ -1,6 +1,4 @@
-# =========================
-# Stage 1: Build ứng dụng React
-# =========================
+
 FROM node:22-alpine 
 
 
@@ -24,5 +22,3 @@ RUN npm install
 # Chạy server dev
 CMD ["npm", "start"]
 
-# Port mapping
-# docker run -d -p 5173:5173 react_web
