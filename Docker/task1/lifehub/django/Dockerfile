@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Thiết lập thư mục làm việc bên trong container
-WORKDIR /lifehub/django
+WORKDIR /lifehub/django/
 
 COPY requirements.txt /lifehub/django/
 RUN pip install --upgrade pip

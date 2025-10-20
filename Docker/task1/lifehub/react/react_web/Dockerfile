@@ -21,7 +21,7 @@ COPY . .
 
 
 # Mở port 5173 (mặc định của Vite)
-EXPOSE 5173
+EXPOSE 3000
 
 # Chạy server dev
 CMD ["npm", "run", "dev", "--", "--host"]

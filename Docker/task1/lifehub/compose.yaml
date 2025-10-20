@@ -1,45 +1,109 @@
 
+networks:
+  nginx_n:
+    driver: bridge
+
 services:
-  nginx:              # Định nghĩa 1 service tên là "reverse-proxy" (Nginx)
-    image: nginx        # Sử dụng image Nginx mới nhất từ Docker Hub
+  nginx:               
+    networks: 
+      - nginx_n
+    env_file: ./.env
     restart: always     # Luôn khởi động lại container nếu nó dừng (trừ khi bạn dừng nó thủ công)
     build: 
       context: ./nginx    # Đường dẫn đến thư mục chứa Dockerfile (thư mục hiện tại)
       dockerfile: Dockerfile    # Tên file Dockerfile (nếu khác "Dockerfile")
     container_name: ${NGINX_HOST}  
-    env_file: ./.env
     ports:
-      - ${NGINX_PORT}:${NGINX_PORT}  # Map (chuyển tiếp) cổng từ biến môi trường NGINX_PORT trên máy host -> cổng NGINX_PORT trong container
+      - 80:80  # Map (chuyển tiếp) cổng từ biến môi trường NGINX_PORT trên máy host -> cổng NGINX_PORT trong container
 
-  node: # Tên service là "node" – đây là một container sẽ được Docker Compose quản lý
-    image: node     # Tên image (sẽ được tạo khi build)
+  node:
+    networks: 
+      - nginx_n
+    env_file: ./.env
     build:                 # Chỉ định cách Docker build image cho service này
       context: ./node      # Đường dẫn đến thư mục chứa Dockerfile (thư mục hiện tại)
       dockerfile: Dockerfile    # Tên file Dockerfile (nếu khác "Dockerfile")
     container_name: ${NODE_HOST}  # Đặt tên container theo biến môi trường SERVER_HOST
-    env_file: ./.env             # Chỉ định file chứa biến môi trường
+                 # Chỉ định file chứa biến môi trường
     ports:
       - ${NODE_PORT}:${NODE_PORT}  # Map (chuyển tiếp) cổng từ biến môi trường SERVER_PORT trên máy host -> cổng SERVER_PORT trong container
+  django: 
+    networks: 
+      - nginx_n
+    env_file: ./.env
+    build: 
+      context: ./django
+      dockerfile: Dockerfile
+    container_name: ${DJANGO_HOST}
+    ports:
+      - 0.0.0.0:${DJANGO_PORT}  
+      
+  react:                        
+    build:                     # Chỉ định cách Docker build image cho service này
+      context: ./react/react_web   
+    env_file: ./.env            # Dấu "." nghĩa là Docker sẽ dùng thư mục hiện tại (nơi chứa Dockerfile)
+    ports:
+      - ${React_HOST}:${React_PORT}              
+                               # Giúp bạn truy cập ứng dụng React bằng http://localhost:5173
+    container_name: ${React_HOST}
+    volumes:
+      #- ./react/react_web:/react_web           # Mount toàn bộ thư mục hiện tại trên host vào /react_web trong container
+                               # => Khi bạn sửa code ở host, container thấy thay đổi ngay (hot reload)
+      - /react_web/node_modules  # Tạo volume ẩn cho /react_web/node_modules trong container
+                               # => Tránh việc node_modules bị ghi đè khi bạn mount thư mục ở trên
+                               # (vì node_modules của host có thể khác OS, không tương thích)
+    develop: 
+      watch:
+      - path: ./react/react_web/package.json
+        action: rebuild
+      - path: ./react/react_web/package-lock.json
+        action: rebuild 
 
-  # web:                         # Định nghĩa 1 service tên là "web" (ứng dụng React của bạn)
-  #   build:                     # Chỉ định cách Docker build image cho service này
-  #     context: ./react/react_web               # Dấu "." nghĩa là Docker sẽ dùng thư mục hiện tại (nơi chứa Dockerfile)
-  #   ports:
-  #     - 5173:5173              # Map (chuyển tiếp) cổng 5173 trên máy host -> cổng 5173 trong container
-  #                              # Giúp bạn truy cập ứng dụng React bằng http://localhost:5173
-  #   volumes:
-  #     #- ./react/react_web:/react_web           # Mount toàn bộ thư mục hiện tại trên host vào /react_web trong container
-  #                              # => Khi bạn sửa code ở host, container thấy thay đổi ngay (hot reload)
-  #     - /react_web/node_modules  # Tạo volume ẩn cho /react_web/node_modules trong container
-  #                              # => Tránh việc node_modules bị ghi đè khi bạn mount thư mục ở trên
-  #                              # (vì node_modules của host có thể khác OS, không tương thích)
-  #   develop: 
-  #     watch:
-  #     - path: ./react/react_web/package.json
-  #       action: rebuild
-  #     - path: ./react/react_web/package-lock.json
-  #       action: rebuild 
+      - path: ./react/react_web/src
+        target: /lifehub/react/react_web/src
+        action: sync
 
-  #     - path: ./react/react_web/src
-  #       target: /lifehub/react/react_web/src
-  #       action: sync
+  ruby:
+    build: 
+      context: ./ruby/RUBY_WEB
+      dockerfile: Dockerfile
+    networks: 
+      - nginx_n
+    env_file: ./.env
+    container_name: ${Ruby_HOST}
+    ports:
+      - ${Ruby_PORT}:${Ruby_PORT}
+
+  php:
+    build: 
+      context: ./php
+      dockerfile: Dockerfile
+    networks: 
+      - nginx_n
+    env_file: ./.env
+    container_name: ${PHP_HOST}
+    ports:
+      - ${PHP_PORT}:${PHP_PORT}
+
+  tomcat:
+    build: 
+      context: ./tomcat
+      dockerfile: Dockerfile
+    networks: 
+      - nginx_n
+    env_file: ./.env
+    container_name: ${Tomcat_HOST}
+    ports:
+      - ${Tomcat_PORT}:${Tomcat_PORT}
+
+
+  quarkus:
+    build: 
+      context: ./quarkus
+      dockerfile: Dockerfile
+    networks: 
+      - nginx_n
+    env_file: ./.env
+    container_name: ${Quarkus_HOST}
+    ports:
+      - ${Quarkus_PORT}:${Quarkus_PORT}
