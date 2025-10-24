@@ -1,7 +1,7 @@
 # =========================
 # Stage 1: Build ứng dụng React
 # =========================
-FROM node:22-alpine AS builder
+FROM node:22-alpine 
 
 
 
@@ -21,10 +21,10 @@ COPY . .
 
 
 # Mở port 5173 (mặc định của Vite)
-EXPOSE 3000
+EXPOSE 5173
 
 # Chạy server dev
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]
 
 # Port mapping
 # docker run -d -p 5173:5173 react_web

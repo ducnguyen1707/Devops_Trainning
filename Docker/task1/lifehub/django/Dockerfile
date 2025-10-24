@@ -17,6 +17,7 @@ RUN pip install -r requirements.txt
 COPY . /lifehub/django
 
 
-
+EXPOSE 8000
 # Lệnh chạy Django khi container khởi động
-CMD ["sh", "-c", "python manage.py runserver 0.0.0.0:${DJANGO_PORT}"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+

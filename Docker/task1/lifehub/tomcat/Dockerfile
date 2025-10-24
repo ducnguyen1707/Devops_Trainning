@@ -1,5 +1,6 @@
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jre-slim
+FROM eclipse-temurin:17-jre
+
 
 # Set the working directory in the container
 WORKDIR /lifehub/tomcat
@@ -16,7 +17,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Expose port 8080 for Tomcat
-EXPOSE 8081
+EXPOSE 8080
 
 # Define the command to run Tomcat
 CMD ["bin/catalina.sh", "run"]

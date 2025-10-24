@@ -17,8 +17,9 @@ WORKDIR /lifehub/ruby/RUBY_WEB/
 COPY Gemfile Gemfile.lock /lifehub/ruby/RUBY_WEB/
 
 # Cài gem (không dùng bundler deployment mode trong dev)
-RUN gem install bundler && bundle install
-
+RUN gem install bundler 
+RUN gem install bundle
+RUN gem install rails
 # Copy toàn bộ mã nguồn vào container
 COPY . /lifehub/ruby/RUBY_WEB/
 

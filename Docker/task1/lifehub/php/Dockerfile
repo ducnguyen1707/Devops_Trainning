@@ -1,10 +1,10 @@
-FROM php:7.4-apache
+FROM php:8.2-cli-alpine
 
 WORKDIR /lifehub/php/
 
 COPY src /lifehub/php/src
-RUN a2enmod rewrite
 
-EXPOSE 8001
 
-CMD ["apache2-foreground"]
+EXPOSE 80
+
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/lifehub/php/src"]
