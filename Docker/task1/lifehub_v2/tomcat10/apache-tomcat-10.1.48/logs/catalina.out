@@ -1,0 +1,431 @@
+28-Oct-2025 20:26:07.057 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.48
+28-Oct-2025 20:26:07.072 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 10 2025 14:33:56 UTC
+28-Oct-2025 20:26:07.078 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.48.0
+28-Oct-2025 20:26:07.078 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+28-Oct-2025 20:26:07.079 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.14.0-1015-aws
+28-Oct-2025 20:26:07.079 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+28-Oct-2025 20:26:07.081 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-21-openjdk-amd64
+28-Oct-2025 20:26:07.082 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.8+9-Ubuntu-0ubuntu124.04.1
+28-Oct-2025 20:26:07.082 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+28-Oct-2025 20:26:07.082 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:26:07.082 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:26:07.115 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/conf/logging.properties
+28-Oct-2025 20:26:07.115 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Oct-2025 20:26:07.116 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+28-Oct-2025 20:26:07.116 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+28-Oct-2025 20:26:07.116 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+28-Oct-2025 20:26:07.116 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+28-Oct-2025 20:26:07.116 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:26:07.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/temp
+28-Oct-2025 20:26:07.124 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent An older version [1.2.35] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.5]
+28-Oct-2025 20:26:07.124 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.2].
+28-Oct-2025 20:26:07.129 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+28-Oct-2025 20:26:07.691 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:26:07.726 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1073)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:520)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:955)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:709)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:732)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:299)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:264)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1398)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1411)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:633)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:82)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1071)
+		... 11 more
+28-Oct-2025 20:26:07.729 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1003] milliseconds
+28-Oct-2025 20:26:07.800 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+28-Oct-2025 20:26:07.802 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.48]
+28-Oct-2025 20:26:07.815 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager]
+28-Oct-2025 20:26:08.237 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager] has finished in [420] ms
+28-Oct-2025 20:26:08.237 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager]
+28-Oct-2025 20:26:08.273 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager] has finished in [36] ms
+28-Oct-2025 20:26:08.273 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT]
+28-Oct-2025 20:26:08.291 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT] has finished in [18] ms
+28-Oct-2025 20:26:08.291 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs]
+28-Oct-2025 20:26:08.307 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs] has finished in [16] ms
+28-Oct-2025 20:26:08.308 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples]
+28-Oct-2025 20:26:08.579 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples] has finished in [271] ms
+28-Oct-2025 20:26:08.590 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [860] milliseconds
+28-Oct-2025 20:29:32.473 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.48
+28-Oct-2025 20:29:32.479 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 10 2025 14:33:56 UTC
+28-Oct-2025 20:29:32.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.48.0
+28-Oct-2025 20:29:32.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+28-Oct-2025 20:29:32.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.14.0-1015-aws
+28-Oct-2025 20:29:32.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+28-Oct-2025 20:29:32.484 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-21-openjdk-amd64
+28-Oct-2025 20:29:32.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.8+9-Ubuntu-0ubuntu124.04.1
+28-Oct-2025 20:29:32.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+28-Oct-2025 20:29:32.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:29:32.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/conf/logging.properties
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+28-Oct-2025 20:29:32.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+28-Oct-2025 20:29:32.503 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+28-Oct-2025 20:29:32.503 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+28-Oct-2025 20:29:32.503 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+28-Oct-2025 20:29:32.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+28-Oct-2025 20:29:32.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:29:32.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:29:32.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/temp
+28-Oct-2025 20:29:32.510 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent An older version [1.2.35] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.5]
+28-Oct-2025 20:29:32.510 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.2].
+28-Oct-2025 20:29:32.513 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+28-Oct-2025 20:29:33.028 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:29:33.045 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1073)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:520)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:955)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:709)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:732)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:299)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:264)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1398)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1411)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:633)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:82)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1071)
+		... 11 more
+28-Oct-2025 20:29:33.046 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [811] milliseconds
+28-Oct-2025 20:29:33.097 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+28-Oct-2025 20:29:33.097 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.48]
+28-Oct-2025 20:29:33.108 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager]
+28-Oct-2025 20:29:33.518 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager] has finished in [410] ms
+28-Oct-2025 20:29:33.519 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager]
+28-Oct-2025 20:29:33.559 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager] has finished in [37] ms
+28-Oct-2025 20:29:33.559 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT]
+28-Oct-2025 20:29:33.591 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT] has finished in [32] ms
+28-Oct-2025 20:29:33.591 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs]
+28-Oct-2025 20:29:33.616 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs] has finished in [25] ms
+28-Oct-2025 20:29:33.617 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples]
+28-Oct-2025 20:29:33.986 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples] has finished in [370] ms
+28-Oct-2025 20:29:33.994 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [946] milliseconds
+28-Oct-2025 20:29:33.996 SEVERE [main] org.apache.catalina.core.StandardServer.await Failed to create server shutdown socket on address [localhost] and port [8005] (base port [8005] and offset [0])
+	java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.Net.bind(Net.java:554)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:531)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:848)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:796)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+28-Oct-2025 20:29:33.997 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:29:33.997 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+28-Oct-2025 20:29:34.043 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:29:34.043 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:32:53.490 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.48
+28-Oct-2025 20:32:53.498 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 10 2025 14:33:56 UTC
+28-Oct-2025 20:32:53.498 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.48.0
+28-Oct-2025 20:32:53.498 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+28-Oct-2025 20:32:53.500 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.14.0-1015-aws
+28-Oct-2025 20:32:53.501 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+28-Oct-2025 20:32:53.501 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-21-openjdk-amd64
+28-Oct-2025 20:32:53.501 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.8+9-Ubuntu-0ubuntu124.04.1
+28-Oct-2025 20:32:53.501 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+28-Oct-2025 20:32:53.501 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:32:53.501 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:32:53.513 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/conf/logging.properties
+28-Oct-2025 20:32:53.517 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Oct-2025 20:32:53.517 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+28-Oct-2025 20:32:53.517 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+28-Oct-2025 20:32:53.517 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+28-Oct-2025 20:32:53.517 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+28-Oct-2025 20:32:53.517 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:32:53.518 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/temp
+28-Oct-2025 20:32:53.524 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent An older version [1.2.35] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.5]
+28-Oct-2025 20:32:53.525 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.2].
+28-Oct-2025 20:32:53.528 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+28-Oct-2025 20:32:53.936 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:32:53.958 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1073)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:520)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:955)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:709)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:732)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:299)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:264)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1398)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1411)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:633)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:82)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1071)
+		... 11 more
+28-Oct-2025 20:32:53.961 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [706] milliseconds
+28-Oct-2025 20:32:54.028 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+28-Oct-2025 20:32:54.028 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.48]
+28-Oct-2025 20:32:54.040 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager]
+28-Oct-2025 20:32:54.419 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager] has finished in [380] ms
+28-Oct-2025 20:32:54.421 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager]
+28-Oct-2025 20:32:54.456 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager] has finished in [35] ms
+28-Oct-2025 20:32:54.457 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT]
+28-Oct-2025 20:32:54.478 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT] has finished in [21] ms
+28-Oct-2025 20:32:54.479 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs]
+28-Oct-2025 20:32:54.494 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs] has finished in [15] ms
+28-Oct-2025 20:32:54.494 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples]
+28-Oct-2025 20:32:54.771 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples] has finished in [277] ms
+28-Oct-2025 20:32:54.778 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [815] milliseconds
+28-Oct-2025 20:32:54.783 SEVERE [main] org.apache.catalina.core.StandardServer.await Failed to create server shutdown socket on address [localhost] and port [820] (base port [820] and offset [0])
+	java.net.BindException: Permission denied
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.Net.bind(Net.java:554)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:531)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:848)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:796)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+28-Oct-2025 20:32:54.784 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:32:54.785 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+28-Oct-2025 20:32:54.815 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:32:54.815 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:34:42.972 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.48
+28-Oct-2025 20:34:42.980 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 10 2025 14:33:56 UTC
+28-Oct-2025 20:34:42.980 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.48.0
+28-Oct-2025 20:34:42.980 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+28-Oct-2025 20:34:42.980 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.14.0-1015-aws
+28-Oct-2025 20:34:42.980 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+28-Oct-2025 20:34:42.984 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-21-openjdk-amd64
+28-Oct-2025 20:34:42.987 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.8+9-Ubuntu-0ubuntu124.04.1
+28-Oct-2025 20:34:42.987 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+28-Oct-2025 20:34:42.987 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:34:42.987 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:34:42.999 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/conf/logging.properties
+28-Oct-2025 20:34:42.999 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Oct-2025 20:34:42.999 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+28-Oct-2025 20:34:42.999 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+28-Oct-2025 20:34:43.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+28-Oct-2025 20:34:43.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+28-Oct-2025 20:34:43.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+28-Oct-2025 20:34:43.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+28-Oct-2025 20:34:43.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+28-Oct-2025 20:34:43.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+28-Oct-2025 20:34:43.000 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+28-Oct-2025 20:34:43.002 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+28-Oct-2025 20:34:43.002 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:34:43.002 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:34:43.003 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/temp
+28-Oct-2025 20:34:43.008 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent An older version [1.2.35] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.5]
+28-Oct-2025 20:34:43.009 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.2].
+28-Oct-2025 20:34:43.014 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+28-Oct-2025 20:34:43.436 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:34:43.459 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1073)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:520)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:955)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:709)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:732)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:299)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:264)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1398)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1411)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:633)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:82)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1071)
+		... 11 more
+28-Oct-2025 20:34:43.461 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [695] milliseconds
+28-Oct-2025 20:34:43.517 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+28-Oct-2025 20:34:43.518 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.48]
+28-Oct-2025 20:34:43.535 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager]
+28-Oct-2025 20:34:43.953 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager] has finished in [421] ms
+28-Oct-2025 20:34:43.955 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager]
+28-Oct-2025 20:34:43.978 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager] has finished in [24] ms
+28-Oct-2025 20:34:43.978 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT]
+28-Oct-2025 20:34:43.996 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT] has finished in [17] ms
+28-Oct-2025 20:34:43.996 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs]
+28-Oct-2025 20:34:44.029 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs] has finished in [33] ms
+28-Oct-2025 20:34:44.030 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples]
+28-Oct-2025 20:34:44.352 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples] has finished in [322] ms
+28-Oct-2025 20:34:44.358 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [895] milliseconds
+28-Oct-2025 20:34:44.362 SEVERE [main] org.apache.catalina.core.StandardServer.await Failed to create server shutdown socket on address [localhost] and port [820] (base port [820] and offset [0])
+	java.net.BindException: Permission denied
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.Net.bind(Net.java:554)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:531)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:848)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:796)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+28-Oct-2025 20:34:44.362 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:34:44.362 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+28-Oct-2025 20:34:44.391 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:34:44.394 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:35:11.471 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.48
+28-Oct-2025 20:35:11.476 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 10 2025 14:33:56 UTC
+28-Oct-2025 20:35:11.479 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.48.0
+28-Oct-2025 20:35:11.479 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+28-Oct-2025 20:35:11.479 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.14.0-1015-aws
+28-Oct-2025 20:35:11.479 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+28-Oct-2025 20:35:11.479 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-21-openjdk-amd64
+28-Oct-2025 20:35:11.479 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           21.0.8+9-Ubuntu-0ubuntu124.04.1
+28-Oct-2025 20:35:11.480 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+28-Oct-2025 20:35:11.480 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:35:11.480 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:35:11.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/conf/logging.properties
+28-Oct-2025 20:35:11.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Oct-2025 20:35:11.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+28-Oct-2025 20:35:11.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+28-Oct-2025 20:35:11.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+28-Oct-2025 20:35:11.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+28-Oct-2025 20:35:11.492 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48
+28-Oct-2025 20:35:11.494 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/temp
+28-Oct-2025 20:35:11.500 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent An older version [1.2.35] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.5]
+28-Oct-2025 20:35:11.500 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.35] using APR version [1.7.2].
+28-Oct-2025 20:35:11.503 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.13 30 Jan 2024]
+28-Oct-2025 20:35:11.953 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:35:11.969 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1073)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:520)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:955)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:709)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:732)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:299)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:264)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1398)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1411)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:633)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:82)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1071)
+		... 11 more
+28-Oct-2025 20:35:11.971 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [665] milliseconds
+28-Oct-2025 20:35:12.023 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+28-Oct-2025 20:35:12.023 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.48]
+28-Oct-2025 20:35:12.036 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager]
+28-Oct-2025 20:35:12.375 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/manager] has finished in [338] ms
+28-Oct-2025 20:35:12.376 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager]
+28-Oct-2025 20:35:12.411 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/host-manager] has finished in [36] ms
+28-Oct-2025 20:35:12.414 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT]
+28-Oct-2025 20:35:12.443 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/ROOT] has finished in [29] ms
+28-Oct-2025 20:35:12.444 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs]
+28-Oct-2025 20:35:12.471 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/docs] has finished in [27] ms
+28-Oct-2025 20:35:12.471 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples]
+28-Oct-2025 20:35:12.796 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/ubuntu/Devops_Trainning/Docker/task1/lifehub_v2/tomcat10/apache-tomcat-10.1.48/webapps/examples] has finished in [325] ms
+28-Oct-2025 20:35:12.803 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [829] milliseconds
+28-Oct-2025 20:35:12.811 SEVERE [main] org.apache.catalina.core.StandardServer.await Failed to create server shutdown socket on address [localhost] and port [820] (base port [820] and offset [0])
+	java.net.BindException: Permission denied
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:565)
+		at java.base/sun.nio.ch.Net.bind(Net.java:554)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:531)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:848)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:796)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+28-Oct-2025 20:35:12.813 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:35:12.814 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+28-Oct-2025 20:35:12.846 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+28-Oct-2025 20:35:12.848 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
