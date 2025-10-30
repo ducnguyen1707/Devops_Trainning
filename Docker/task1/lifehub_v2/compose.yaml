@@ -1,17 +1,50 @@
 version: '3'
-
-
 services:
+  node_exporter:
+    container_name: node_exporter
+    image: prom/node-exporter:latest
+    command:
+      - '--path.rootfs=/host'
+    pid: "host"
+    volumes:
+      - '/:/host:ro'
+    networks:
+      - lifehub_v2
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    networks:
+      - lifehub_v2
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      # - ./prometheus-data:/prometheus
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    networks:
+      - lifehub_v2
+    # volumes:
+    #   - ./grafana-data:/var/lib/grafana
 
   nginx:
     image: nginx:latest
     networks:
       - lifehub_v2
-
-    build: 
-      context: ./reverse-proxy
-      dockerfile: Dockerfile
+    # build: 
+    #   context: ./reverse-proxy
+    #   dockerfile: Dockerfile
+    # container_name: nginx_c_v2
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
     container_name: nginx_c_v2
+    # depends_on:
+    #   - go
     ports:
       - "80:80"
       
@@ -19,13 +52,11 @@ services:
     image: python:3.12-slim
     networks:
       - lifehub_v2
-
     build: 
       context: ./django
       dockerfile: Dockerfile
     container_name: django_c_v2
-    ports:
-      - 8000:8000
+    
 
   react:
     image: node:22-alpine
@@ -36,45 +67,37 @@ services:
       dockerfile: Dockerfile
     container_name: react_c_v2
     ports:
-      - 5173:5173
+      - "5173:5173"
 
-  go:
-    image: golang:1.22-alpine
-    networks:
-      - lifehub_v2
-
-    build: 
-      context: ./go
-      dockerfile: Dockerfile
-    container_name: go_c_v2
-    ports:
-      - 8081:8081
-
+  # go:
+  #   image: golang:1.22-alpine
+  #   networks:
+  #     - lifehub_v2
+  #   build: 
+  #     context: ./go
+  #     dockerfile: Dockerfile
+  #   container_name: go_c_v2
+   
   nodejs:
     image: node:20-alpine
     networks:
       - lifehub_v2
-
     build: 
       context: ./nodejs
       dockerfile: Dockerfile
     container_name: nodejs_c_v2
-    ports:
-      - 3000:3000
-
+ 
   ruby:
     image: ruby:3.2-alpine
     networks:
       - lifehub_v2
-
     build: 
       context: ./ruby/app
       dockerfile: Dockerfile
     container_name: ruby_c_v2
     environment:
       - SECRET_KEY_BASE="3d962bc93f3fbb38ab92ce20c5c4fe3d4e76492f138976fe6733ab9cc1353b1d04153ab1e1ddab9f33e3c7129df0896018c1b2a360a383902c51ab6284972b56"
-    ports:
-      - 4567:4567 
+    
   # tomcat10:
   #   image: tomcat:10.1.18-jdk17-temurin-alpine
   #   networks:
@@ -85,7 +108,6 @@ services:
   #     dockerfile: Dockerfile
   #   container_name: tomcat10_c_v2
 
-  
 networks:
   lifehub_v2:
     driver: bridge
