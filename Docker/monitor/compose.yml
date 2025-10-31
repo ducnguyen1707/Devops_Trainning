@@ -1,0 +1,28 @@
+version: "3.8"  # Phiên bản của Docker Compose (3.8 là phổ biến và tương thích tốt)
+
+services:  # Khối khai báo các container (dịch vụ) cần chạy
+  grafana:  # Tên service là "grafana"
+      image: grafana/grafana  # Sử dụng image chính thức của Grafana từ Docker Hub
+      container_name: grafana  # Đặt tên container là "grafana" (dễ quản lý bằng docker ps)
+      ports:
+        - "3000:3000"  # Mở port 3000 trên máy host → port 3000 trong container (web UI Grafana)
+      restart: unless-stopped  # Tự động khởi động lại container nếu dừng bất ngờ (trừ khi bạn stop thủ công)
+      volumes:
+        - grafana-data:/var/lib/grafana  # Gắn volume để lưu dữ liệu Grafana (dashboard, users, plugin, config...)
+  # http://localhost:3000  # Địa chỉ truy cập Grafana sau khi chạy docker-compose
+  # mk: admin
+  prometheus:  # Tên service là "prometheus"
+      image: prom/prometheus  # Sử dụng image chính thức của Prometheus từ Docker Hub
+      container_name: prometheus  # Đặt tên container là "prometheus"
+      command:
+        - "--config.file=/etc/prometheus/prometheus.yml"  # Chỉ định file cấu hình Prometheuspo
+      ports:
+        - "9090:9090"  # Mở port 9090 trên máy host → port 9090 trong container (web UI Prometheus)
+      restart: unless-stopped
+      volumes:
+        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml  # Gắn file cấu hình Prometheus từ host vào container
+        - prom_data:/prometheus  # Gắn volume để lưu dữ liệu Prometheus (dữ liệu thu thập được)
+
+volumes:  # Khối khai báo volume
+  grafana-data: {}  # Volume tên "grafana-data" dùng để lưu dữ liệu bền vững (không mất khi xóa container)
+  prom_data:   # Volume tên "prom-data" (nếu cần dùng sau này)
