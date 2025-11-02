@@ -1,0 +1,34 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/trusty64"
+  config.vm.provider "virtualbox" do |vb|
+    vb.linked_clone = false
+  end
+
+
+  # first
+  config.vm.define "first" do |first|
+    first.vm.hostname = "first"
+    #localhost port forwarding
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+    # Public IP (bridge)
+    #first.vm.network "public_network", dhcp: true
+    # Private IP (dhcp)
+    #first.vm.network "private_network", type: "dhcp"
+  end
+
+  # second
+  config.vm.define "second" do |second|
+    second.vm.hostname = "second"
+    second.vm.network "public_network", dhcp: true
+    second.vm.network "private_network", type: "dhcp"
+  end
+
+  # third
+  config.vm.define "third" do |third|
+    third.vm.hostname = "third"
+    third.vm.network "public_network", dhcp: true
+    third.vm.network "private_network", type: "dhcp"
+  end
+
+  config.vm.provision "shell", path: "update_web.sh"
+end
