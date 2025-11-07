@@ -16,6 +16,5 @@ WORKDIR /root/
 
 COPY --from=builder /lifehub_v2/go .
 
-EXPOSE 8080
 
 ENTRYPOINT [ "./lifehub_v2" ]
