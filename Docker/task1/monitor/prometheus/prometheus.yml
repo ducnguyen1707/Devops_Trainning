@@ -1,0 +1,45 @@
+global:
+  scrape_interval: 15s        
+  scrape_timeout: 10s         
+  evaluation_interval: 15s    
+
+scrape_configs:      
+  - job_name: 'node_exporter'  
+    static_configs:
+      - targets: ['Ec2_ip.143:9100']     #thay doi dc ip ec2
+  - job_name: 'postgres_exporter'  
+    static_configs:
+      - targets: ['Ec2_ip:9187']        #thay doi dc ip ec2
+  - job_name: 'blackbox_exporter'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]  # Sử dụng module "http_2xx" đã định nghĩa trong cấu hình blackbox
+    static_configs:
+      - targets:
+          - https://www.google.com
+          - https://benhvienhanoi.vn/
+    relabel_configs:
+      # Lấy giá trị của __address__ (tức là từng target ở trên)
+      # và gán vào param "target" trong URL /probe?target=<value>
+      - source_labels: [__address__]
+        target_label: __param_target
+      # Gán giá trị của __param_target (chính là URL thực tế được probe)
+      # làm nhãn "instance" trong metric (để metric hiển thị theo tên website thật, không phải exporter)
+      - source_labels: [__param_target]
+        target_label: instance
+      # Cuối cùng, thay đổi __address__ (địa chỉ thật mà Prometheus scrape)
+      # sang địa chỉ của blackbox exporter container trong mạng Docker
+      # => Prometheus sẽ gọi blackbox:9115/probe?target=<URL>
+      - target_label: __address__
+        replacement: blackbox:9115
+
+rule_files:
+  - "postgres_alerts.yml"
+  
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - 'alertmanager:9093'
+
+
