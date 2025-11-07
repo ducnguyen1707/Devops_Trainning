@@ -1,0 +1,14 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: 'slack-alert'   # <-- ở đây phải trùng tên với receiver bên dưới
+
+receivers:
+  - name: 'slack-alert'
+    slack_configs:
+      - send_resolved: true
+        channel: '#prometheus_alert'
+        username: 'bot'
+        api_url: 'thay_url_webhook_slack_cua_ban_o_day'  # <-- Thay bằng URL webhook Slack của bạn
+       
