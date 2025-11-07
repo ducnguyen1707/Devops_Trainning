@@ -1,0 +1,21 @@
+groups:
+  - name: postgres-locks
+    rules:
+      - alert: TooManyLocks
+        expr: sum(pg_locks_count) by (mode) > 5
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Có quá nhiều PostgreSQL locks"
+          description: "Số lượng lock đang vượt ngưỡng 5 trong hơn 30 giây."
+  - name: server-status
+    rules:
+      - alert: ServerDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Server {{ $labels.instance }} bị sập"
+          description: "Prometheus không thể thu thập metrics từ {{ $labels.job }} (instance: {{ $labels.instance }}) trong hơn 1 phút."

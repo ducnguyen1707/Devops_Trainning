@@ -1,0 +1,61 @@
+version: "3.8"  # Phiên bản của Docker Compose (3.8 là phổ biến và tương thích tốt)
+
+networks:
+  monitor-net:  # Tên mạng nội bộ cho các container trong cùng project
+    driver: bridge  # Sử dụng driver mạng "bridge" (mặc định cho mạng nội bộ)
+
+services:  # Khối khai báo các container (dịch vụ) cần chạy
+  grafana:  # Tên service là "grafana"
+      image: grafana/grafana  # Sử dụng image chính thức của Grafana từ Docker Hub
+      container_name: grafana  # Đặt tên container là "grafana" (dễ quản lý bằng docker ps)
+      networks:
+        - monitor-net  # Kết nối container Grafana vào mạng nội bộ "monitor-net"
+      ports:
+        - "3000:3000"  # Mở port 3000 trên máy host → port 3000 trong container (web UI Grafana)
+      restart: unless-stopped  # Tự động khởi động lại container nếu dừng bất ngờ (trừ khi bạn stop thủ công)
+      volumes:
+        - grafana-data:/var/lib/grafana  # Gắn volume để lưu dữ liệu Grafana (dashboard, users, plugin, config...)
+  # http://localhost:3000  # Địa chỉ truy cập Grafana sau khi chạy docker-compose
+  # mk: admin
+
+  prometheus:  # Tên service là "prometheus"
+      image: prom/prometheus  # Sử dụng image chính thức của Prometheus từ Docker Hub
+      container_name: prometheus  # Đặt tên container là "prometheus"
+      command:
+        - "--config.file=/etc/prometheus/prometheus.yml"  # Chỉ định file cấu hình Prometheuspo
+      networks:
+        - monitor-net  # Kết nối container Prometheus vào mạng nội bộ "monitor-net
+      ports:
+        - "9090:9090"  # Mở port 9090 trên máy host → port 9090 trong container (web UI Prometheus)
+      restart: unless-stopped
+      volumes:
+        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml  # Gắn file cấu hình Prometheus từ host vào container
+        - prom_data:/prometheus  # Gắn volume để lưu dữ liệu Prometheus (dữ liệu thu thập được)
+        -  ./prometheus/postgres_alerts.yml:/etc/prometheus/postgres_alerts.yml  # Gắn file alert rules từ host vào container
+        - ./blackbox/blackbox.yml:/etc/prometheus/blackbox.yml  # Gắn file cấu hình blackbox từ host vào container
+
+  blackbox:
+    image: prom/blackbox-exporter
+    container_name: blackbox
+    networks:
+      - monitor-net
+    ports:
+      - "9115:9115"
+    restart: unless-stopped
+    volumes:
+      - ./blackbox/blackbox.yml:/config/blackbox.yml 
+      
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    volumes:
+      - ./alerting/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    networks:
+      - monitor-net
+    restart: unless-stopped
+
+volumes:  # Khối khai báo volume
+  grafana-data: {}  # Volume tên "grafana-data" dùng để lưu dữ liệu bền vững (không mất khi xóa container)
+  prom_data:   # Volume tên "prom-data" (nếu cần dùng sau này)
