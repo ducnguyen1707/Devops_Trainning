@@ -1,0 +1,52 @@
+service: 
+  redis:
+    image: redis:latest
+    container_name: redis
+    volumes:
+      - redis_data:/data
+    restart: always
+    network: 
+      - pg_network
+  postgres-master:
+    build:
+      context: ./pg_master
+      dockerfile: Dockerfile
+    container_name: postgres-master
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pg_master_data:/var/lib/postgresql/data
+    network:
+      - pg_network
+  postgres-standby:
+    build:
+      context: ./pg_standby
+      dockerfile: Dockerfile
+    container_name: postgres-standby
+    env_file:
+      - ./.env
+    environment:
+      PG_MASTER_HOST: postgres-master
+      PG_MASTER_PORT: 5432
+      PG_REPLICATION_USER: ${REPLICATION_USER}
+      PG_REPLICATION_PASSWORD: ${REPLICATION_PASSWORD}
+    depends_on:
+      - postgres-master
+    volumes:
+      - pg_master_data:/var/lib/postgresql/data
+    network:
+      - pg_network
+    
+
+network:
+  pg_network:
+    external: true
+
+volumes:
+  redis_data:
+  pg_master_data:
+  pg_standby_data:
