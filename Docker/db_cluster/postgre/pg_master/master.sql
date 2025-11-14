@@ -1,5 +1,5 @@
 -- Tạo user replication
-CREATE ROLE replicator LOGIN ENCRYPTED PASSWORD 'replicator_pass';
+CREATE USER replicator WITH REPLICATION ENCRYPTED PASSWORD 'replicator_password';
 
 -- Tạo user app (nếu bạn cần ứng dụng kết nối)
 CREATE ROLE appuser WITH LOGIN ENCRYPTED PASSWORD 'app_pass';

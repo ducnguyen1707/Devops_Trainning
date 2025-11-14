@@ -1,4 +1,5 @@
-FROM livingdocs/postgres:15.0
+FROM postgres:17
+
 COPY master.sql /docker-entrypoint-initdb.d/
 
 # Cho phép replication kết nối 

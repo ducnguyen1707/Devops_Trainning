@@ -1,30 +1,58 @@
 #!/bin/bash
 set -e
 
-if [ -f .env ]; then
-  export $(grep -v '^#' .env | xargs)
-fi
+echo "[REPLICA] Starting replica setup..."
 
-echo "Waiting for pg_master ($PG_MASTER_HOST:$PG_MASTER_PORT)..."
-until nc -z "$PG_MASTER_HOST" "$PG_MASTER_PORT"; do
-  sleep 2
+MASTER_HOST=${MASTER_HOST:-postgres-master}
+REPLICATION_USER=${REPLICATION_USER:-replicator}
+REPLICATION_PASSWORD=${REPLICATION_PASSWORD:-replica_pass}
+PGDATA=${PGDATA:-/var/lib/postgresql/data}
+
+# -----------------------------------------------------------------------------
+# 1. Wait until master accepts connections
+# -----------------------------------------------------------------------------
+echo "[REPLICA] Waiting for master at $MASTER_HOST:5432 ..."
+until pg_isready -h "$MASTER_HOST" -p 5432 -U "$REPLICATION_USER"; do
+    sleep 2
 done
-echo "Master is up. Starting base backup..."
+echo "[REPLICA] Master is reachable."
 
-if [ -z "$(ls -A /var/lib/postgresql/data)" ]; then
-  echo "Data directory empty, running base backup..."
-  pg_basebackup -h "$PG_MASTER_HOST" -D /var/lib/postgresql/data -U "$PGUSER" -v -P --wal-method=stream
+# -----------------------------------------------------------------------------
+# 2. If PGDATA is empty → do pg_basebackup
+# -----------------------------------------------------------------------------
+if [ ! -s "$PGDATA/PG_VERSION" ]; then
+    echo "[REPLICA] PGDATA is empty. Performing pg_basebackup..."
+
+    rm -rf "$PGDATA"/*
+    chmod 700 "$PGDATA"
+
+    PGPASSWORD="$REPLICATION_PASSWORD" pg_basebackup \
+        -h "$MASTER_HOST" \
+        -U "$REPLICATION_USER" \
+        -D "$PGDATA" \
+        -Fp -Xs -P -R
+
+    echo "[REPLICA] Base backup complete."
 else
-  echo "Data already exists, skipping base backup."
+    echo "[REPLICA] Existing PGDATA detected → skipping pg_basebackup."
 fi
 
-# Tạo file standby.signal để bật chế độ replica
-touch /var/lib/postgresql/data/standby.signal
+# -----------------------------------------------------------------------------
+# 3. Ensure standby mode
+# -----------------------------------------------------------------------------
 
-# Cấu hình kết nối đến master trong postgresql.auto.conf
-echo "primary_conninfo = 'host=$PG_MASTER_HOST port=$PG_MASTER_PORT user=$PGUSER password=$PGPASSWORD'" >> /var/lib/postgresql/data/postgresql.auto.conf
+# Force create standby.signal if missing
+if [ ! -f "$PGDATA/standby.signal" ]; then
+    echo "[REPLICA] Creating standby.signal ..."
+    touch "$PGDATA/standby.signal"
+fi
 
-chown -R postgres:postgres /var/lib/postgresql/data
+# Add primary_conninfo if missing
+if ! grep -q "primary_conninfo" "$PGDATA/postgresql.auto.conf"; then
+    echo "[REPLICA] Setting primary_conninfo ..."
+    echo "primary_conninfo = 'host=$MASTER_HOST user=$REPLICATION_USER password=$REPLICATION_PASSWORD'" \
+        >> "$PGDATA/postgresql.auto.conf"
+fi
 
-echo "Starting pg_standby"
+echo "[REPLICA] Starting PostgreSQL in standby mode..."
 exec docker-entrypoint.sh postgres
