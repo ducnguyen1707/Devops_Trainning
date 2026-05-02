@@ -1,9 +1,75 @@
+# Maven
 target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.backup
+release.properties
+.flattened-pom.xml
+
+# Java
 *.class
 *.jar
 *.war
-.idea/
-.DS_Store
-*.iml
-.vscode/
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 *.log
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.sublime-workspace
+*.sublime-project
+.DS_Store
+
+# Build
+.gradle/
+build/
+dist/
+bin/
+
+# Dependencies
+node_modules/
+.m2/
+
+# Runtime
+*.pid
+*.seed
+*.pid.lock
+
+# Database
+*.db
+*.sqlite
+postgres_data/
+
+# Docker
+.dockerignore
+.docker/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+.pytest_cache/
+.coverage
+
+# Spring Boot specific
+application-local.yml
+application-dev.yml
