@@ -39,7 +39,7 @@ pipeline{
         }
         stage("Build Application"){
             steps {
-                sh "cd ${APP_DIR} && mvn clean package -DskipTests -q"
+                sh "cd ${APP_DIR} && mvn clean package"
             }
         }
         stage("Run Tests"){
