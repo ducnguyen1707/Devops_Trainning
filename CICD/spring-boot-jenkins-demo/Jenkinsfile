@@ -9,7 +9,7 @@ pipeline{
         timestamps()
     }
     environment {
-        APP_DIR = "~/workspace/Devops_Trainning/CICD/spring-boot-jenkins-demo"
+        APP_DIR = "/home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
     }
     stages{
         stage("Clean up"){
