@@ -1,7 +1,6 @@
 pipeline{
     agent {label 'jenkins-agent'}
     tools {
-        jdk 'java21'
         maven 'Maven3'
     }
     options {
@@ -10,6 +9,7 @@ pipeline{
     }
     environment {
         APP_DIR = "/home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
+        JAVA_HOME = "/usr/lib/jvm/java-21-openjdk-amd64"
     }
     stages{
         stage("Clean up"){
