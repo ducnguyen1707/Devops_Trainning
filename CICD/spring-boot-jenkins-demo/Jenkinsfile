@@ -9,7 +9,7 @@ pipeline{
         timestamps()
     }
     environment {
-        APP_DIR = "/home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
+        APP_DIR = "~/workspace/Devops_Trainning/CICD/spring-boot-jenkins-demo"
     }
     stages{
         stage("Clean up"){
@@ -22,10 +22,19 @@ pipeline{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/ducnguyen1707/Devops_Trainning.git'
             }
         }
+        stage("Verify Docker"){
+            steps {
+                sh '''
+                    docker info
+                    docker version
+                    docker compose version
+                '''
+            }
+        }
         stage("Start Database"){
             steps {
                 sh "cd ${APP_DIR} && docker-compose up -d"
-                sh "sleep 15 && docker-compose ps"
+                sh "cd ${APP_DIR} && sleep 15 && docker-compose ps"
             }
         }
         stage("Build Application"){
@@ -36,15 +45,6 @@ pipeline{
         stage("Run Tests"){
             steps {
                 sh "cd ${APP_DIR} && mvn test -q"
-            }
-        }
-        stage("Verify Docker"){
-            steps {
-                sh '''
-                    docker info
-                    docker version
-                    docker compose version
-                '''
             }
         }
         stage("Build Docker Image"){
