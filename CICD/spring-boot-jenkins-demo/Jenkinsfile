@@ -1,0 +1,40 @@
+pipeline{
+    agent {label 'jenkins-agent'}
+    tool {
+        jdk: 'java21'
+        maven: 'Maven3'
+    }
+    stages{
+        stage("Clean up "){
+            steps {
+                cleanWs()
+            }
+        }
+        stage("Check out src"){
+            steps {
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/ducnguyen1707/Devops_Trainning/tree/main/CICD/spring-boot-jenkins-demo'
+            }
+        }
+        stage("Start DB"){
+            steps {
+                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
+                sh "docker-compose up -d"
+                sh "sleep 20"
+            }
+        }
+        stage("Build"){
+            steps {
+                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
+                sh "mvn clean package -DskipTests"
+                sh "mvn spring-boot:run"
+            }
+        }
+        stage("test"){
+            steps {
+                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
+                sh "mvn test"
+                sh "mvn verify"
+            }
+        }
+    }
+}
