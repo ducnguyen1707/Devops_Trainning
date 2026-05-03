@@ -4,8 +4,15 @@ pipeline{
         jdk 'java21'
         maven 'Maven3'
     }
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+    }
+    environment {
+        APP_DIR = "/home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
+    }
     stages{
-        stage("Clean up "){
+        stage("Clean up"){
             steps {
                 cleanWs()
             }
@@ -15,21 +22,43 @@ pipeline{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/ducnguyen1707/Devops_Trainning.git'
             }
         }
-        stage("Start DB"){
+        stage("Start Database"){
             steps {
-                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo && docker compose up -d"
-                sh "sleep 20"
+                sh "cd ${APP_DIR} && docker-compose up -d"
+                sh "sleep 15 && docker-compose ps"
             }
         }
-        stage("Build"){
+        stage("Build Application"){
             steps {
-                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo && mvn clean package -DskipTests"
+                sh "cd ${APP_DIR} && mvn clean package -DskipTests -q"
             }
         }
-        stage("Test"){
+        stage("Run Tests"){
             steps {
-                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo && mvn test && mvn verify"
+                sh "cd ${APP_DIR} && mvn test -q"
             }
+        }
+        stage("Build Docker Image"){
+            steps {
+                sh "cd ${APP_DIR} && docker build -t spring-boot-app:latest ."
+                sh "docker images | grep spring-boot-app"
+            }
+        }
+        stage("Cleanup"){
+            steps {
+                sh "cd ${APP_DIR} && docker-compose down"
+            }
+        }
+    }
+    post {
+        always {
+            sh "cd ${APP_DIR} && docker-compose down -v || true"
+        }
+        success {
+            echo "Pipeline completed successfully!"
+        }
+        failure {
+            echo "Pipeline failed! Check logs above."
         }
     }
 }
