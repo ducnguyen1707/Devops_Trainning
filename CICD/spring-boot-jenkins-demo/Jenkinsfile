@@ -17,7 +17,7 @@ pipeline{
         }
         stage("Start DB"){
             steps {
-                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo && docker-compose up -d"
+                sh "cd /home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo && docker compose up -d"
                 sh "sleep 20"
             }
         }
