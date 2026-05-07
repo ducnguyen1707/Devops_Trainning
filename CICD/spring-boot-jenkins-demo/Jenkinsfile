@@ -53,22 +53,26 @@ pipeline{
                     withSonarQubeEnv(credentialsId: 'jenkin-sonar-token') {
                         sh "cd ${APP_DIR} && mvn sonar:sonar "
                     }
+                    def qualitygate = waitForQualityGate()
+                        if (qualitygate.status != "OK") {
+                            error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                        }
                 }
             }
         }
-        stage("Quality Gate"){
-            steps {
-                script {
-                    // timeout(time: 1, unit: 'MINUTES') {
-                    //     def qg = waitForQualityGate()
-                    //     if (qg.status != 'OK') {
-                    //         error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                    //     }
-                    // }
-                    waitForQualityGate abortPipeline: false, credentialsId: 'jenkin-sonar-token'
-                }
-            }
-        }
+        // stage("Quality Gate"){
+        //     steps {
+        //         script {
+        //             // timeout(time: 1, unit: 'MINUTES') {
+        //             //     def qg = waitForQualityGate()
+        //             //     if (qg.status != 'OK') {
+        //             //         error "Pipeline aborted due to quality gate failure: ${qg.status}"
+        //             //     }
+        //             // }
+        //             waitForQualityGate abortPipeline: false, credentialsId: 'jenkin-sonar-token'
+        //         }
+        //     }
+        // }
         stage("Build Docker Image"){
             steps {
                 sh "cd ${APP_DIR} && docker build -t spring-boot-app:latest ."
