@@ -51,8 +51,7 @@ pipeline{
             steps{
                 script{
                     withSonarQubeEnv(credentialsId: 'jenkin-sonar-token') {
-                        sh "cd ${APP_DIR}"
-                        sh "mvn sonar:sonar"
+                        sh "cd ${APP_DIR} && mvn sonar:sonar -Dsonar.projectKey=spring-boot-app -Dsonar.sources=src/main -Dsonar.tests=src/test"
                     }
                 }
             }
