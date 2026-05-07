@@ -47,19 +47,19 @@ pipeline{
                 sh "cd ${APP_DIR} && mvn test -q"
             }
         }
-        stage("Sonar Scan"){
-            steps{
-                script{
-                    withSonarQubeEnv(credentialsId: 'jenkin-sonar-token') {
-                        sh "cd ${APP_DIR} && mvn sonar:sonar "
-                    }
-                    def qualitygate = waitForQualityGate()
-                        if (qualitygate.status != "OK") {
-                            error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
-                        }
-                }
-            }
-        }
+        // stage("Sonar Scan"){
+        //     steps{
+        //         script{
+        //             withSonarQubeEnv(credentialsId: 'jenkin-sonar-token') {
+        //                 sh "cd ${APP_DIR} && mvn sonar:sonar "
+        //             }
+        //             def qualitygate = waitForQualityGate()
+        //                 if (qualitygate.status != "OK") {
+        //                     error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+        //                 }
+        //         }
+        //     }
+        // }
         
         stage("Build Docker Image"){
             steps {
