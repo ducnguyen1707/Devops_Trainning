@@ -47,20 +47,13 @@ pipeline{
                 sh "cd ${APP_DIR} && mvn test -q"
             }
         }
-        stage("Sonar Quality Analysis"){
-            steps {
-                // Perform SonarQube code quality analysis
-                // This stage analyzes the source code for bugs, vulnerabilities, and code smells
-                // The results are published to the SonarQube server for quality tracking
-                withCredentials([string(credentialsId: 'jenkin-sonar-token', variable: 'SONAR_TOKEN')]) {
-                    sh '''
-                        cd ${APP_DIR}
-                        mvn sonar:sonar \
-                            -Dsonar.projectKey=spring-boot-app \
-                            -Dsonar.sources=src/main \
-                            -Dsonar.tests=src/test \
-                            -Dsonar.login=${SONAR_TOKEN}
-                    '''
+        stage("Sonar Scan"){
+            step{
+                script{
+                    withSonnarQubeEnv(credentialsId: 'jenkin-sonar-token') {
+                        sh"cd ${APP_DIR}"
+                        sh "mvn sonar:sonar"
+                    }
                 }
             }
         }
