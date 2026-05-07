@@ -58,6 +58,7 @@ pipeline{
         }
         stage("Quality Gate"){
             steps {
+                sh "cd ${APP_DIR} && echo 'Waiting for SonarQube Quality Gate result...'"
                 script{
                     // Wait for SonarQube Quality Gate result
                     // This ensures code meets minimum quality standards before proceeding
