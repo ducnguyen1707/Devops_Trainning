@@ -4,7 +4,7 @@ pipeline{
         maven 'Maven3'
     }
     options {
-        timeout(time: 30, unit: 'MINUTES')
+        timeout(time: 5, unit: 'MINUTES')
         timestamps()
     }
     environment {
@@ -45,6 +45,23 @@ pipeline{
         stage("Run Tests"){
             steps {
                 sh "cd ${APP_DIR} && mvn test -q"
+            }
+        }
+        stage("Sonar Quality Analysis"){
+            steps {
+                // Perform SonarQube code quality analysis
+                // This stage analyzes the source code for bugs, vulnerabilities, and code smells
+                // The results are published to the SonarQube server for quality tracking
+                withCredentials([string(credentialsId: 'jenkins-sonar-token', variable: 'SONAR_TOKEN')]) {
+                    sh '''
+                        cd ${APP_DIR}
+                        mvn sonar:sonar \
+                            -Dsonar.projectKey=spring-boot-app \
+                            -Dsonar.sources=src/main \
+                            -Dsonar.tests=src/test \
+                            -Dsonar.login=${SONAR_TOKEN}
+                    '''
+                }
             }
         }
         stage("Build Docker Image"){
