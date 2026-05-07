@@ -50,7 +50,7 @@ pipeline{
         stage("Sonar Scan"){
             steps{
                 script{
-                    withSonnarQubeEnv(credentialsId: 'jenkin-sonar-token') {
+                    withSonarQubeEnv(credentialsId: 'jenkin-sonar-token') {
                         sh "cd ${APP_DIR}"
                         sh "mvn sonar:sonar"
                     }
