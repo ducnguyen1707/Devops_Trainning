@@ -51,9 +51,6 @@ pipeline{
             steps{
                 script{
                     withSonarQubeEnv(credentialsId: 'jenkin-sonar-token') {
-                        dir("${WORKSPACE}") {
-                            sh 'mvn -B sonar:sonar'
-                        }
                     }
                 }
             }
@@ -61,12 +58,7 @@ pipeline{
         stage("Quality Gate"){
             steps {
                 script {
-                    timeout(time: 1, unit: 'HOURS') {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            error "Pipeline abortada devido a falha do Quality Gate: ${qg.status}"
-                        }
-                    }
+                    waitForQualityGate abortPipeline: true, credentialsId: 'jenkin-sonar-token'
                 }
             }
         }
