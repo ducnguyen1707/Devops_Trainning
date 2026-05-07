@@ -56,6 +56,13 @@ pipeline{
                 }
             }
         }
+        stage("Quality Gate"){
+            steps {
+                script{
+                    waitForQualityGate abortPipeline: false, credentialsId: 'jenkin-sonar-token'
+                }
+            }
+        }
         stage("Build Docker Image"){
             steps {
                 sh "cd ${APP_DIR} && docker build -t spring-boot-app:latest ."
