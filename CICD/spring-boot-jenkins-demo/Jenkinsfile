@@ -52,7 +52,7 @@ pipeline{
                 // Perform SonarQube code quality analysis
                 // This stage analyzes the source code for bugs, vulnerabilities, and code smells
                 // The results are published to the SonarQube server for quality tracking
-                withCredentials([string(credentialsId: 'jenkins-sonar-token', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'jenkin-sonar-token', variable: 'SONAR_TOKEN')]) {
                     sh '''
                         cd ${APP_DIR}
                         mvn sonar:sonar \
