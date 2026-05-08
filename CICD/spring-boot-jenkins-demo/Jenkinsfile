@@ -10,6 +10,9 @@ pipeline{
     environment {
         APP_DIR = "/home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
         JAVA_HOME = "/usr/lib/jvm/java-21-openjdk-amd64"
+        SONAR_PROJECT_KEY = "spring-boot-app"
+        SONAR_SOURCES = "src/main"
+        SONAR_TESTS = "src/test"
     }
     stages{
         stage("Clean up"){
@@ -51,7 +54,7 @@ pipeline{
             steps{
                 script{
                     withSonarQubeEnv(installationName: 'sq') {
-                         sh "cd ${APP_DIR} && mvn clean verify sonar:sonar"
+                         sh "cd ${APP_DIR} && mvn clean verify sonar:sonar -Dsonar.projectKey=spring-boot-app"
                     }
                 }
             }
@@ -60,8 +63,11 @@ pipeline{
             steps {
                 script {
                     withSonarQubeEnv(installationName: 'sq') {
-                        timeout(time:2, unit: 'MINUTES'){
-                            waitForQualityGate abortPipeline: true
+                        timeout(time: 5, unit: 'MINUTES'){
+                            def qualityGate = waitForQualityGate abortPipeline: false
+                            if (qualityGate.status != 'OK') {
+                                error "Quality Gate failed: ${qualityGate.status}"
+                            }
                         }
                     }
                 }
