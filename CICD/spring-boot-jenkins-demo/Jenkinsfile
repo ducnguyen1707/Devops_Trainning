@@ -51,11 +51,7 @@ pipeline{
             steps{
                 script{
                     withSonarQubeEnv(installationName: 'sq') {
-                        sh """
-                        cd ${APP_DIR}
-                        mvn sonar:sonar \
-                          -Dsonar.login=${SONAR_TOKEN}
-                        """
+                         sh "cd ${APP_DIR} && mvn clean verify sonar:sonar"
                     }
                 }
             }
