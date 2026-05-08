@@ -52,25 +52,16 @@ pipeline{
         }
         stage("Sonar Scan"){
             steps{
-                script{
                     withSonarQubeEnv(installationName: 'sq') {
                          sh "cd ${APP_DIR} && mvn clean verify sonar:sonar -Dsonar.projectKey=spring-boot-app"
                     }
-                }
             }
         }
         stage("Quality Gate"){
             steps {
-                script {
-                    withSonarQubeEnv(installationName: 'sq') {
                         timeout(time: 5, unit: 'MINUTES'){
-                            def qualityGate = waitForQualityGate abortPipeline: false
-                            if (qualityGate.status != 'OK') {
-                                error "Quality Gate failed: ${qualityGate.status}"
-                            }
+                        waitForQualityGate abortPipeline: true
                         }
-                    }
-                }
             }
         }
         stage("Build Docker Image"){
