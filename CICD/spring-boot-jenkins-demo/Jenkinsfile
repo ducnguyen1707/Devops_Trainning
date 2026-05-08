@@ -50,7 +50,7 @@ pipeline{
         stage("Sonar Scan"){
             steps{
                 script{
-                    withSonarQubeEnv('SonarQubeServer') {
+                    withSonarQubeEnv(installationName: 'sq') {
                         sh "cd ${APP_DIR} && mvn sonar:sonar "
                     }
                 }
