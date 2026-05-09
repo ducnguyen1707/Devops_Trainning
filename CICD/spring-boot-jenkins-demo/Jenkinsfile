@@ -101,7 +101,6 @@ pipeline{
                     }
                 }
             }
-        }
     post {
         always {
             sh "cd ${APP_DIR} && docker-compose down -v || true"
@@ -113,5 +112,3 @@ pipeline{
             echo "Pipeline failed! Check logs above."
         }
     }
-}
-}
