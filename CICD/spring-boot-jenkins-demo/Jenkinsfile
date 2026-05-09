@@ -59,6 +59,13 @@ pipeline{
                 }
             }
         }
+        stage("Quality gate"){
+            steps{
+                script{
+                    waitForQualityGate abortPipline: false, credentialsId: 'jenkins-sonarqube-token'
+                }
+            }
+        }
         stage("Build Docker Image"){
             steps {
                 sh "cd ${APP_DIR} && docker build -t spring-boot-app:latest ."
