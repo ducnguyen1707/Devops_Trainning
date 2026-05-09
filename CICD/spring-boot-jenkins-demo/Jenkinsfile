@@ -65,12 +65,43 @@ pipeline{
                 sh "docker images | grep spring-boot-app"
             }
         }
-        stage("Cleanup"){
+        stage("Cleanup") {
             steps {
-                sh "cd ${APP_DIR} && docker-compose down"
+                script {
+                    try {
+                        sh "cd ${APP_DIR} && docker-compose down"
+                    } catch (Exception e) {
+                        echo "docker-compose down failed, trying force cleanup..."
+        
+                        // Lấy container ID (có thể lọc theo tên nếu cần)
+                        def containerId = sh(
+                            script: "docker ps -aq --filter name=demo-postgres",
+                            returnStdout: true
+                        ).trim()
+        
+                        if (containerId) {
+                            echo "Found container: ${containerId}"
+        
+                            // Lấy PID
+                            def pid = sh(
+                                script: "docker inspect --format '{{.State.Pid}}' ${containerId}",
+                                returnStdout: true
+                            ).trim()
+        
+                            echo "Killing PID: ${pid}"
+        
+                            // Kill process
+                            sh "sudo kill -9 ${pid} || true"
+        
+                            // Remove container lại
+                            sh "docker rm -f ${containerId} || true"
+                        } else {
+                            echo "No container found"
+                        }
+                    }
+                }
             }
         }
-    }
     post {
         always {
             sh "cd ${APP_DIR} && docker-compose down -v || true"
