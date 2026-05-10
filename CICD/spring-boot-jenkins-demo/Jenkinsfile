@@ -13,7 +13,7 @@ pipeline{
         PROJECT_NAME = "spring-boot-app demo for CICD"
         DOCKER_USER = "ducng17"
         DOCKER_PASS = "dockerhub"
-        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${PROJECT_NAME
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${PROJECT_NAME}"
         VERSION = "1.0.0"
         IMAGE_TAG = "${VERSION}"-"${BUILD_NUMBER}" 
     }
@@ -72,10 +72,19 @@ pipeline{
                 }
             }
         }
-        stage("Build DB Image"){
+        stage("Build Project Image and push on Docker HUB"){
             steps {
-                sh "cd ${APP_DIR} && docker build -t spring-boot-app:latest ."
-                sh "docker ps -a | grep spring-boot-app"
+                scripts{
+                    dir("${APP_DIR}") {
+                        docker.withRegistry('', DOCKER_PASS) {
+                            def docker_image = docker.build("${IMAGE_NAME}")
+                        }
+                    }
+                    docker.withRegistry('', DOCKER_PASS) {
+                        docker_image.push("${IMAGE_TAG}")
+                        docker_image.push('latest')
+                    }
+                }
             }
         }
         
