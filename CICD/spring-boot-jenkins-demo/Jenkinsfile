@@ -99,6 +99,7 @@ pipeline{
                     try {
                         sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
                         sh "docker rmi ${IMAGE_NAME}:latest"
+                        sh "docker rmi -f aquasec/trivy"
                         sh "cd ${APP_DIR} && docker-compose down"
                     } catch (Exception e) {
                         // Fixing issue: Can not shut down db container
