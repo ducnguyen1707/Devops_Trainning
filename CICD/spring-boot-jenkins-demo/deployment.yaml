@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: sringboot-demo
+        app: springboot-demo
     spec:
       containers:
         - name: springboot-demo
