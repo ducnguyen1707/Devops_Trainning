@@ -97,6 +97,8 @@ pipeline{
                 script {
                     try {
                         sh "cd ${APP_DIR} && docker-compose down"
+                        sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                        sh "docker rmi ${IMAGE_NAME}:latest
                     } catch (Exception e) {
                         // Fixing issue: Can not shut down db container
                         echo "docker-compose down failed, trying force cleanup..."
