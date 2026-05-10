@@ -101,6 +101,7 @@ pipeline{
                         sh "docker rmi ${IMAGE_NAME}:latest"
                         sh "docker rm -f \$(docker ps -aq --filter name=spring-boot-app) || true"
                         sh "docker rmi -f aquasec/trivy"
+                        sh "docker rm -f $(docker ps -aq --filter ancestor=aquasec/trivy) || true"
                         sh "cd ${APP_DIR} && docker-compose down"
                     } catch (Exception e) {
                         // Fixing issue: Can not shut down db container
