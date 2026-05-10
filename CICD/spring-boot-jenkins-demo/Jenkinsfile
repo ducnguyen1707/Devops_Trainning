@@ -87,7 +87,7 @@ pipeline{
         }
         stage("Trivy scan"){
             steps{
-                scripts{
+                script {
                     sh ("docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image ducng17/spring-boot-app-demo_for_cicd:latest --no-progress --scanners vuln --exit-code 1 --severity HIGH,CRITICAL --format table")
                 }
             }
