@@ -28,15 +28,6 @@ pipeline{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/ducnguyen1707/Devops_Trainning.git'
             }
         }
-        stage("Verify Docker"){
-            steps {
-                sh '''
-                    docker info
-                    docker version
-                    docker compose version
-                '''
-            }
-        }
         stage("Start Database"){
             steps {
                 sh "cd ${APP_DIR} && docker-compose up -d"
