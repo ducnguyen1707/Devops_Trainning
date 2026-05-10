@@ -10,7 +10,7 @@ pipeline{
     environment {
         APP_DIR = "/home/ubuntu/Devops_Trainning/CICD/spring-boot-jenkins-demo"
         JAVA_HOME = "/usr/lib/jvm/java-21-openjdk-amd64"
-        PROJECT_NAME = "spring-boot-app demo for CICD"
+        PROJECT_NAME = "spring-boot-app demo_for_cicd"
         DOCKER_USER = "ducng17"
         DOCKER_PASS = "dockerhub"
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${PROJECT_NAME}"
