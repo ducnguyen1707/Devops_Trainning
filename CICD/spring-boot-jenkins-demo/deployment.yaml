@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-demo-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: springboot-demo
+  template:
+    metadata:
+      labels:
+        app: sringboot-demo
+    spec:
+      containers:
+        - name: springboot-demo
+          image: ducng17/spring-boot-app-demo_for_cicd:latest
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
