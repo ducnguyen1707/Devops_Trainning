@@ -87,7 +87,7 @@ mvn clean package
 mvn spring-boot:run
 ```
 
-The application will start on `http://localhost:8080`
+The application will start on `http://localhost:8081`
 
 ### 5. Test the Application
 ```bash
@@ -102,7 +102,7 @@ mvn verify
 
 ### Health Check
 ```bash
-GET http://localhost:8080/health
+GET http://localhost:8081/health
 ```
 
 **Response:**
@@ -115,17 +115,17 @@ GET http://localhost:8080/health
 
 ### Get All Users
 ```bash
-GET http://localhost:8080/api/users
+GET http://localhost:8081/api/users
 ```
 
 ### Get User by ID
 ```bash
-GET http://localhost:8080/api/users/{id}
+GET http://localhost:8081/api/users/{id}
 ```
 
 ### Create User
 ```bash
-POST http://localhost:8080/api/users
+POST http://localhost:8081/api/users
 Content-Type: application/json
 
 {
@@ -137,7 +137,7 @@ Content-Type: application/json
 
 ### Update User
 ```bash
-PUT http://localhost:8080/api/users/{id}
+PUT http://localhost:8081/api/users/{id}
 Content-Type: application/json
 
 {
@@ -149,26 +149,26 @@ Content-Type: application/json
 
 ### Delete User
 ```bash
-DELETE http://localhost:8080/api/users/{id}
+DELETE http://localhost:8081/api/users/{id}
 ```
 
 ## Testing with cURL
 
 ### Health Check
 ```bash
-curl -X GET http://localhost:8080/health
+curl -X GET http://localhost:8081/health
 ```
 
 ### Create a User
 ```bash
-curl -X POST http://localhost:8080/api/users \
+curl -X POST http://localhost:8081/api/users \
   -H "Content-Type: application/json" \
   -d '{"name":"John Doe","email":"john@example.com","phone":"1234567890"}'
 ```
 
 ### Get All Users
 ```bash
-curl -X GET http://localhost:8080/api/users
+curl -X GET http://localhost:8081/api/users
 ```
 
 ### List Database Tables

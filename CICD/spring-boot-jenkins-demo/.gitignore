@@ -47,6 +47,7 @@ node_modules/
 *.db
 *.sqlite
 postgres_data/
+*.sql
 
 # Docker
 .dockerignore
