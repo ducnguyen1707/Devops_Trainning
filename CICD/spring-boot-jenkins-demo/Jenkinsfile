@@ -31,7 +31,7 @@ pipeline{
         stage("Start Database"){
             steps {
                 sh "cd ${APP_DIR} && docker-compose up -d"
-                sh "cd ${APP_DIR} && sleep 15 && docker-compose ps"
+                sh "cd ${APP_DIR} && docker-compose ps"
             }
         }
         stage("Build Application"){
@@ -87,40 +87,14 @@ pipeline{
         stage("Cleanup") {
             steps {
                 script {
-                    try {
                         sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
                         sh "docker rmi ${IMAGE_NAME}:latest"
                         sh "docker rm -f \$(docker ps -aq --filter name=spring-boot-app) || true"
                         sh "docker rm -f \$(docker ps -aq --filter ancestor=aquasec/trivy) || true"
                         sh "docker rmi -f aquasec/trivy || true"
-                        sh "cd ${APP_DIR} && docker-compose down"
-                    } catch (Exception e) {
-                        // Fixing issue: Can not shut down db container
-                        echo "docker-compose down failed, trying force cleanup..."
-        
-                        // Take containerID
-                        def containerId = sh(
-                            script: "docker ps -aq --filter name=demo-postgres",
-                            returnStdout: true
-                        ).trim()
-                        // Found the PID then kill it and rm 
-                        if (containerId) {
-                            echo "Found container: ${containerId}"
-                            def pid = sh(
-                                script: "docker inspect --format '{{.State.Pid}}' ${containerId}",
-                                returnStdout: true
-                            ).trim()
-                            echo "Killing PID: ${pid}"
-                            // Kill process
-                            sh "sudo kill -9 ${pid} || true"
-                            // Rm container
-                            sh "docker rm -f ${containerId} || true"
-                        } else {
-                            echo "No container found"
-                        }
-                    }
                 }
             }
+        }
     post {
         always {
             sh "cd ${APP_DIR} && docker-compose down -v || true"
