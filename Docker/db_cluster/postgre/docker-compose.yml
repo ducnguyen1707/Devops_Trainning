@@ -35,7 +35,7 @@ services:
     networks:
       - pg_network
   exporter_master:
-    image: bitnami/postgres-exporter:latest
+    image: soldevelo/postgres-exporter:latest
     container_name: export_master
     environment:
       DATA_SOURCE_NAME: "postgresql://appuser:app_pass@postgres-master:5432/appdb?sslmode=disable" # or "postgresql://admin:admin@postgres-master:5432/admin?sslmode=disable"
@@ -46,7 +46,7 @@ services:
     networks:
       - pg_network
   exporter_standby:
-    image: bitnami/postgres-exporter:latest
+    image: soldevelo/postgres-exporter:latest
     container_name: export_standby
     environment:
       # exec into master & GRANT CONNECT ON DATABASE appdb TO replicator;
